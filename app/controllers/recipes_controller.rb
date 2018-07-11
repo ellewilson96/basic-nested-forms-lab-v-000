@@ -9,18 +9,18 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.ingredients.build(ingredient_type: '1')
-    @recipe.ingredients.build(ingredient_type: '2')
+    @recipe.ingredients.build(recipe_params)
+    @recipe.ingredients.build(recipe_params)
   end
 
   def create
   end
 
-  private 
+  private
 
-  def recipe_params 
+  def recipe_params
     params.require(:recipe).permit(
-    :title, 
+    :title,
     ingredients_attributes: [
       :ingredient_1,
       :ingredient_2,
